@@ -1,0 +1,33 @@
+<div id="filter">
+  <h1>Planets</h1>
+  
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Search planets" aria-label="Planet" matInput [formControl]="searchValue" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let planet of filteredOptions | async" [value]="planet.name">
+        {{planet.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+
+<div id="planets"  [@listAnimation]="planetsLength">
+  <div class="planet" *ngFor="let planet of filteredOptions | async">
+    <mat-card>
+      <img mat-card-image [src]="getImage(planet.terrain)" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          <b>{{ planet.name }}</b>
+        </p>
+        <p>
+          Population: <br />
+          <i>{{ planet.population }}</i>
+        </p>
+        <p>
+          Diameter: <br />
+          <i>{{ planet.diameter }} km</i>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

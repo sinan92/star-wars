@@ -1,0 +1,53 @@
+@import "../../../variables.scss";
+
+#planets {
+  float: left;
+  width: 100%;
+
+  .planet {
+    float: left;
+    margin-bottom: 5px;
+    padding: 0 0.2%;
+    width: 13.88%;
+
+    @media screen and (max-width: $break-large) {
+      width: 19.6%;
+    }
+
+    @media screen and (max-width: $break-medium) {
+      width: 24.6%;
+    }
+
+    @media screen and (max-width: $break-phone) {
+      width: 49.605%;
+    }
+
+    mat-card {
+      background-color: $secondary-color-transparent;
+      color: white;
+      height: 320px;
+      padding-top: 40px;
+    }
+  }
+}
+
+#filter {
+  margin-left: 0.5%;
+
+  ::ng-deep {
+    .mat-form-field-underline {
+      background-color: $secondary-color;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-label {
+      color: $secondary-color;
+    }
+
+    .mat-input-element {
+      caret-color: $secondary-color;
+    }
+  }
+}
+
+.center {
+  text-align: center;
+}

@@ -1,0 +1,33 @@
+@import "../../../variables.scss";
+
+#film-container, #image-wrapper, #film-info, #actors{
+  float: left;
+}
+
+#actors{
+  margin-top: 20px;
+  width: 100%;
+}
+
+#film-info{
+  width: 50%;
+  padding-left: 30px;
+}
+
+@media screen and (max-width: $break-films) {
+  #image-wrapper{
+    display: none;
+  }
+  #film-info{
+    width: 80%;
+  }
+}
+
+mat-table{
+  background-color: rgba(0,0,0,0);
+}
+
+mat-table * {
+  color: $secondary-color;
+  border-color: $secondary-color;
+}

@@ -1,0 +1,104 @@
+@import "../variables.scss";
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#logo{
+  float: left;
+  position: absolute;
+  top: 15px;
+  margin-left: 1%;
+}
+
+nav {
+  overflow: hidden;
+  padding-top: 9vh;
+  border-bottom: 1px solid $secondary-color;
+}
+
+nav a {
+  float: right;
+  font-size: 16px;
+  color: $secondary-color;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav a, nav .subnav .subnavbtn {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+nav a:hover, nav .subnav .subnavbtn:hover{
+  color: $tertiary-color;
+}
+
+.menu-item {
+  display: block;
+
+  @media screen and (max-width: $break-small) {
+    display: none;
+  }
+}
+
+.subnav {
+  float: right;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: $secondary-color;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  right: 10%;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: right;
+  color: $tertiary-color;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  color: $quaternary-color;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+// Mobile menu
+#mobile-menu {
+  display: none;
+  float: right;
+  color: $secondary-color;
+
+  @media screen and (max-width: $break-small) {
+    display: block;
+  }
+}
+
+#content{
+  float: left;
+  margin-top: 5vh;
+  background-color: $main-color-transparent;
+  width: 90%;
+  height: auto;
+  padding: 5%;
+  color: $secondary-color;
+}

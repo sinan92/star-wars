@@ -1,0 +1,49 @@
+<nav>
+  <div class="wrapper">
+    <div id="logo">
+      <img src="../assets/images/logo.png" width="100" />
+    </div>
+
+    <div class="menu-item" *ngFor="let route of routes">
+      <a *ngIf="!route.data.subItems; else subNav" [routerLink]="route.path">{{route.path}}</a>
+
+      <ng-template #subNav>
+        <div class="subnav">
+          <button class="subnavbtn">Films <i class="fa fa-caret-down"></i></button>
+          <div class="subnav-content">
+            <a *ngFor="let subItem of route.data.subItems" [routerLink]="route.path.split('/')[0] + '/' + subItem">{{ subItem }}</a>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+    <button id="mobile-menu" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div class="mobile-menu-item" *ngFor="let route of routes">
+        <button *ngIf="!route.data.subItems; else mobileSubNav" mat-menu-item [routerLink]="route.path">
+          <span>{{route.data.name}}</span>
+        </button>
+        <ng-template #mobileSubNav>
+          <button mat-menu-item [matMenuTriggerFor]="films">
+            <span>{{route.data.name}}</span>
+          </button>
+
+          <mat-menu #films="matMenu">
+            <button mat-menu-item *ngFor="let subItem of route.data.subItems" [routerLink]="route.path.split('/')[0] + '/' + subItem">{{ subItem }}</button>
+          </mat-menu>
+        </ng-template>
+      </div>
+    </mat-menu>
+  </div>
+
+</nav>
+
+
+
+<div class="wrapper">
+  <div id="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

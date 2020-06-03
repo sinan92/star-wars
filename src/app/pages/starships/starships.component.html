@@ -1,0 +1,34 @@
+<div id="filter">
+  <h1>Starships</h1>
+  
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Search starships" aria-label="Starship" matInput [formControl]="searchValue" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let starship of filteredOptions | async" [value]="starship.name">
+        {{starship.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+
+<div id="starships"  [@listAnimation]="starshipsLength">
+  <div class="starship" *ngFor="let starship of filteredOptions | async">
+    <mat-card>
+      <mat-card-content>
+        <img mat-card-image [src]="getImage(starship.name)" alt="Photo of a Shiba Inu">
+        <p>
+          Name: <br />
+          <i>{{ starship.name }}</i>
+        </p>
+        <p>
+          Manufacturer: <br />
+          <i>{{ starship.manufacturer }}</i>
+        </p>
+        <p>
+          Passengers: <br />
+          <i>{{ starship.passengers }}</i>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div id="content-container" *ngIf="currentFilm && currentFilm.image">
+  <div id="film-container">
+    <div id="image-wrapper">
+      <img [src]="currentFilm.image" width="300" />
+    </div>
+
+    <div id="film-info">
+      <h1>{{currentFilm.title}}</h1>
+      <p>{{currentFilm.summary}}</p>
+      <p><b>Rating:</b> {{ currentFilm.rating }}</p>
+      <p><b>Genres:</b> {{ currentFilm.genres }}</p>
+      <p><b>Release date:</b> {{ currentFilm.release_date }}</p>
+      <p><b>Producer:</b> {{ currentFilm.producer }}</p>
+    </div>
+  </div>
+
+  <div id="actors">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" #peopleTable>
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="height">
+        <mat-header-cell *matHeaderCellDef> Height </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.height}} </mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.gender}} </mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="filmsCount">
+        <mat-header-cell *matHeaderCellDef> Films count </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.films.length}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</div>
